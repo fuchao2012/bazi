@@ -23,9 +23,13 @@
             <h1 class="title">三官八字排盘</h1>
         </div>
         <div class="weui-cell">
+            <img src="http://mailshark.nos-jd.163yun.com/document/static/4CB791511ADB3DE8A44A288818769666.jpg" alt=""
+                width="100%">
+        </div>
+        <div class="weui-cell" style="margin-top: 2rem;">
             <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" required type="text" placeholder="请输入姓名">
+                <input class="weui-input" id="username" type="text" placeholder="请输入姓名">
             </div>
         </div>
         <div class="weui-cell weui-cells_switch">
@@ -37,21 +41,19 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><label for="" class="weui-label">出生日期</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" required type="text" id="datetime-picker">
+                <input class="weui-input" type="text" id="datetime-picker">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label for="" class="weui-label">祖籍</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" required type="text" value="" id="city-picker">
+                <input class="weui-input" type="text" value="" id="city-picker">
             </div>
         </div>
         <div class="weui-cell">
             <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="runBazi()">开始测算</a>
         </div>
-        <div class="weui-cell" style="margin-top: 3rem;">
-            <img src="http://mailshark.nos-jd.163yun.com/document/static/4CB791511ADB3DE8A44A288818769666.jpg" alt="" width="100%">
-        </div>
+
     </div>
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
@@ -64,7 +66,8 @@
         $("#gender-picker").select({ title: "选择性别", items: ["男", "女"] });
         function runBazi() {
             const datetime = $('#datetime-picker').val();
-            if(!datetime) {
+            const username = $('#username').val();
+            if (!datetime || !username) {
                 $.toptip('请提供完整准确的八字信息', 'error');
                 return;
             }
